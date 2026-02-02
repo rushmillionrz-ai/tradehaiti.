@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradeHaiti</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0d1117;
+  color:white;
+}
+header{
+  background:#161b22;
+  padding:12px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+}
+.balance{
+  display:flex;
+  justify-content:space-around;
+  padding:15px;
+}
+.card{
+  background:#21262d;
+  padding:10px;
+  border-radius:8px;
+  width:45%;
+  text-align:center;
+}
+.chart{
+  height:180px;
+  background:linear-gradient(180deg,#00ff9955,#000);
+  margin:15px;
+  border-radius:10px;
+  position:relative;
+}
+.price{
+  position:absolute;
+  right:10px;
+  top:10px;
+  font-size:18px;
+}
+.controls{
+  display:flex;
+  justify-content:space-around;
+  padding:10px;
+}
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+}
+.buy{background:#00c853;}
+.sell{background:#d50000;}
+footer{
+  background:#161b22;
+  padding:10px;
+  text-align:center;
+  font-size:12px;
+}
+select{
+  padding:6px;
+  background:#21262d;
+  color:white;
+  border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>📈 TradeHaiti</header>
+
+<div class="balance">
+  <div class="card">
+    <h3>Demo</h3>
+    <p id="demo">1000 HTG</p>
+  </div>
+  <div class="card">
+    <h3>Réel</h3>
+    <p>0 HTG</p>
+  </div>
+</div>
+
+<div style="text-align:center">
+  Timeframe :
+  <select>
+    <option>3s</option>
+    <option>10s</option>
+    <option>15s</option>
+    <option>1m</option>
+    <option>15m</option>
+    <option>30m</option>
+    <option>1h</option>
+  </select>
+</div>
+
+<div class="chart">
+  <div class="price" id="price">1.000</div>
+</div>
+
+<div class="controls">
+  <button class="buy" onclick="trade()">BUY</button>
+  <button class="sell" onclick="trade()">SELL</button>
+</div>
+
+<footer>
+Recharge & Retrait manuel<br>
+WhatsApp : +509 3570 7561
+</footer>
+
+<script>
+let demo=1000;
+let price=1;
+
+setInterval(()=>{
+ price+=(Math.random()-0.5)/50;
+ document.getElementById("price").innerText=price.toFixed(3);
+},1000);
+
+function trade(){
+ let gain=(Math.random()>0.5)?20:-20;
+ demo+=gain;
+ document.getElementById("demo").innerText=demo+" HTG";
+ alert(gain>0?"✅ Gain +20 HTG":"❌ Perte -20 HTG");
+}
+</script>
+
+</body>
+  </html>
